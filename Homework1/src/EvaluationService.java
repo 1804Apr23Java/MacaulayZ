@@ -30,7 +30,19 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		char letter;
+		String acro = "";
+		for (int i=0; i<phrase.length(); i++) {
+			letter = phrase.charAt(i);
+			if(i == 0) {
+				acro = acro + Character.toUpperCase(phrase.charAt(i));
+			}
+			if(letter == ' ' || letter == '-') {
+				acro = acro + Character.toUpperCase(phrase.charAt(i+1));
+				
+			}
+		}		
+		return acro;
 	}
 
 	/**
@@ -131,47 +143,74 @@ public class EvaluationService {
 			char letter = string.charAt(i);
 			switch(letter) {
 				case 'a':
+				case 'A':
 				case 'e':
+				case 'E':
 				case 'i':
+				case 'I':
 				case 'o':
+				case 'O':
 				case 'u':
+				case 'U':
 				case 'l':
+				case 'L':
 				case 'n':
+				case 'N':
 				case 'r':
+				case 'R':
 				case 's':
+				case 'S':
 				case 't':
+				case 'T':
 					score += 1;
 					break;
 				case 'd':
+				case 'D':
 				case 'g':
+				case 'G':
 					score += 2;
 					break;
 				case 'b':
+				case 'B':
 				case 'c':
+				case 'C':
 				case 'm':
+				case 'M':
 				case 'p':
+				case 'P':
 					score += 3;
 					break;
 				case 'f':
+				case 'F':
 				case 'h':
+				case 'H':
 				case 'v':
+				case 'V':
 				case 'w':
+				case 'W':
 				case 'y':
+				case 'Y':
 					score += 4;
 					break;
 				case 'k':
+				case 'K':
 					score += 5;
 					break;
 				case 'j':
+				case 'J':
 				case 'x':
+				case 'X':
 					score += 8;
 					break;
 				case 'q':
+				case 'Q':
 				case 'z':
+				case 'Z':
 					score += 10;
 					break;
 			}
 		}
+		
 		return score;
 	}
 
@@ -208,7 +247,16 @@ public class EvaluationService {
 	 */
 	public String cleanPhoneNumber(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		String number = "";
+		for(int i=0; i<string.length(); i++) {
+			char digit = string.charAt(i);
+			if(digit == '-' || digit == ' ' || digit == '(' || digit == ')' || digit == '.') {
+				continue;
+			}
+			number = number + string.charAt(i);
+			
+		}
+		return number;
 	}
 
 	/**

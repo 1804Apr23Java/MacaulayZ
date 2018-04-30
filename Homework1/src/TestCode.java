@@ -1,81 +1,43 @@
+import java.util.Map;
 
 public class TestCode {
 	/**
-	 * 4. Given a word, compute the scrabble score for that word.
+	 * 5. Clean up user-entered phone numbers so that they can be sent SMS messages.
 	 * 
-	 * --Letter Values-- Letter Value A, E, I, O, U, L, N, R, S, T = 1; D, G = 2; B,
-	 * C, M, P = 3; F, H, V, W, Y = 4; K = 5; J, X = 8; Q, Z = 10; Examples
-	 * "cabbage" should be scored as worth 14 points:
+	 * The North American Numbering Plan (NANP) is a telephone numbering system used
+	 * by many countries in North America like the United States, Canada or Bermuda.
+	 * All NANP-countries share the same international country code: 1.
 	 * 
-	 * 3 points for C, 1 point for A, twice 3 points for B, twice 2 points for G, 1
-	 * point for E And to total:
+	 * NANP numbers are ten-digit numbers consisting of a three-digit Numbering Plan
+	 * Area code, commonly known as area code, followed by a seven-digit local
+	 * number. The first three digits of the local number represent the exchange
+	 * code, followed by the unique four-digit number which is the subscriber
+	 * number.
 	 * 
-	 * 3 + 2*1 + 2*3 + 2 + 1 = 3 + 2 + 6 + 3 = 5 + 9 = 14
+	 * The format is usually represented as
 	 * 
-	 * @param string
-	 * @return
+	 * 1 (NXX)-NXX-XXXX where N is any digit from 2 through 9 and X is any digit
+	 * from 0 through 9.
+	 * 
+	 * Your task is to clean up differently formatted telephone numbers by removing
+	 * punctuation and the country code (1) if present.
+	 * 
+	 * For example, the inputs
+	 * 
+	 * +1 (613)-995-0253 613-995-0253 1 613 995 0253 613.995.0253 should all produce
+	 * the output
+	 * 
+	 * 6139950253
+	 * 
+	 * Note: As this exercise only deals with telephone numbers used in
+	 * NANP-countries, only 1 is considered a valid country code.
 	 */
-	public static int getScrabbleScore(String string) {
+	public Map<String, Integer> wordCount(String string) {
 		// TODO Write an implementation for this method declaration
-		int score = 0;
-		
-		for(int i=0; i < string.length(); i++) {
-			char letter = string.charAt(i);
-			switch(letter) {
-				case 'a':
-				case 'e':
-				case 'i':
-				case 'o':
-				case 'u':
-				case 'l':
-				case 'n':
-				case 'r':
-				case 's':
-				case 't':
-					score += 1;
-					break;
-				case 'd':
-				case 'g':
-					score += 2;
-					break;
-				case 'b':
-				case 'c':
-				case 'm':
-				case 'p':
-					score += 3;
-					break;
-				case 'f':
-				case 'h':
-				case 'v':
-				case 'w':
-				case 'y':
-					score += 4;
-					break;
-				case 'k':
-					score += 5;
-					break;
-				case 'j':
-				case 'x':
-					score += 8;
-					break;
-				case 'q':
-				case 'z':
-					score += 10;
-					break;
-			}
-		}
-		return score;
+		return null;
 	}
 	
 	public static void main(String[] args) {
-		int scoreTest1 = getScrabbleScore("f");
-		System.out.println(scoreTest1);
-		
-		int scoreTest2 = getScrabbleScore("zoo");
-		System.out.println(scoreTest2);
-		
-		int scoreTest3 = getScrabbleScore("street");
-		System.out.println(scoreTest3);
 		
 	}
 
