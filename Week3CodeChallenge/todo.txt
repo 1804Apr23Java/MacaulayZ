@@ -1,0 +1,11 @@
+represent books as javascript objects
+
+be able to add a row to the table dynamically
+
+could also delete row
+
+keep array of book objects
+
+make external javascript file
+
+add event listeners 

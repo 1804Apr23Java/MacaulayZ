@@ -9,10 +9,11 @@
 	<div>
 		<h1>Code Challenge 3</h1>
 	</div>
+	
 	<div>
 		<table id="booksTable">
 			<caption><strong>Books</strong></caption>
-			<tr>
+			<!--<tr>
 				<th>Title</th>
 				<th>Author</th>
 				<th>Genre</th>
@@ -29,7 +30,7 @@
 				<td>Isaac Asimov</td>
 				<td>Science-fiction</td>
 				<td><img src="images/IRobot.jpg"></td>
-			</tr>
+			</tr>-->
 		</table>
 	</div>
 	<div>
@@ -41,11 +42,19 @@
 			<option value="delete">Delete Row</option>
 		</select>
 	</div>
-	<script type="text/javascript">
-		var table = document.getElementById("booksTable");
-		var rowInsert = table.insertRow();
-		var rowDelete = table.deleteRow();
-		
-	</script>
+	
+	<div id = "myForm">
+		<br>
+		<form>
+		Title:<br>
+		<input type="text" name="title"><br>
+		Author:<br>
+		<input type="text" name="author"><br>
+		Genre:<br>
+		<input type="text" name="genre"><br>
+		<input type="submit" value="Submit">
+		</form>
+	</div>
+	<script type="text/javascript" src="Week3CodeChallenge.js"></script>
 </body>
 </html>
