@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Code Challenge 3</title>
+<link rel="stylesheet" type="text/css" href="Week3CodeChallenge.css">
+</head>
+<body>
+	<div>
+		<h1>Code Challenge 3</h1>
+	</div>
+	<div>
+		<table id="booksTable">
+			<caption><strong>Books</strong></caption>
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Genre</th>
+				<th>Cover Image</th>
+			</tr>
+			<tr>
+				<td>Flowers for Algernon</td>
+				<td>Daniel Keyes</td>
+				<td>Fiction</td>
+				<td><img src="images/FlowersForAlgernon.jpg"></td>
+			</tr>
+			<tr>
+				<td>I, Robot</td>
+				<td>Isaac Asimov</td>
+				<td>Science-fiction</td>
+				<td><img src="images/IRobot.jpg"></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<p>Table modifications:</p>
+		<select>
+			<option value=""></option>
+			<option value="edit">Edit</option>
+			<option value="insert">Insert</option>
+			<option value="delete">Delete</option>
+		</select>
+	</div>
+	<script type="text/javascript">
+		var table = document.getElementById("booksTable");
+		var rowInsert = table.insertRow();
+		var rowDelete = table.deleteRow();
+		
+	</script>
+</body>
+</html>
