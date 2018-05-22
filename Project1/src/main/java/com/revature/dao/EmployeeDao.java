@@ -10,8 +10,8 @@ import com.revature.java.OverdraftException;
 import com.revature.tables.Reimbursements;
 
 public interface EmployeeDao {
-	public void createEmployeeAccount(int employeeID, String password) throws SQLException, IOException;
-	public void userLogin() throws IncorrectPasswordException;
+	//public void createEmployeeAccount(int employeeID, String password) throws SQLException, IOException;
+	public boolean employeeLogin(int employeeId, String password) throws IncorrectPasswordException;
 	public Employee viewEmployeeAccount(Employee a) throws SQLException, IOException;
 	public List<Reimbursements> getReimbursements(Employee a);
 	public Employee getEmployeeById(int employeeID);

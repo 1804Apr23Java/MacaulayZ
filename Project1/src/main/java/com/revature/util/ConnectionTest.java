@@ -18,8 +18,11 @@ public class ConnectionTest {
 		}
 		
 		Properties prop = new Properties();
-		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		prop.load(loader.getResourceAsStream(filename));
+		//ClassLoader loader = Thread.currentThread().getContextClassLoader();
+		//prop.load(loader.getResourceAsStream(filename));
+		//uncomment these and delete InputStream when servlet is added
+		InputStream in = new FileInputStream(filename);
+		prop.load(in);
 		String url = prop.getProperty("url");
 		String username = prop.getProperty("username");
 		String password = prop.getProperty("password");

@@ -26,9 +26,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	public void createEmployeeAccount(int empId, String password) throws SQLException, IOException {	
 		PreparedStatement pstmt = null;
 		try (Connection con = ConnectionTest.getConnectionFromFile()) {
-			Scanner sc = new Scanner(System.in);
-			System.out.println("Please enter a password.");
-			password = sc.nextLine();
+			//Scanner sc = new Scanner(System.in);
+			//System.out.println("Please enter a password.");
+			//password = sc.nextLine();
 			String sql = "INSERT INTO EMPLOYEE VALUES(EMPLOYEE_SEQ.NEXTVAL,?)"; 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, password);
@@ -40,7 +40,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			System.out.println("Account created. Your username is ");
 			Employee a = new Employee(empId, password, 0, null, null);
 			viewEmployeeAccount(a);
-			sc.close();
+			//sc.close();
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -48,11 +48,11 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 	
 	public void userLogin() throws IncorrectPasswordException {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Please enter your user ID.");
-		int empId = sc.nextInt();
-		System.out.println("Please enter your password.");
-		String password = sc.next();
+		//Scanner sc = new Scanner(System.in);
+		//System.out.println("Please enter your user ID.");
+		//int empId = sc.nextInt();
+		//System.out.println("Please enter your password.");
+		//String password = sc.next();
 		Employee a = new Employee(empId, password, 0, null, null);
 		try (Connection con = ConnectionTest.getConnectionFromFile()) {
 			String sql = "SELECT * FROM EMPLOYEE WHERE EMPLOYEE_ID = ? AND EMPLOYEE_PASSWORD = ?";
@@ -66,7 +66,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				viewEmployeeAccount(a);
 			}
 			con.close();
-			sc.close();
+			//sc.close();
 		} catch (IncorrectPasswordException e) {
 			userLogin();
 		} catch (SQLException e) {
