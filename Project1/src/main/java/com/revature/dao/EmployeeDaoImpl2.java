@@ -5,17 +5,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-
 import com.revature.java.IncorrectPasswordException;
-import com.revature.java.OverdraftException;
 import com.revature.tables.Employee;
-import com.revature.tables.Reimbursements;
 import com.revature.util.ConnectionTest;
 
 public class EmployeeDaoImpl2 implements EmployeeDao{
-	private int employeeId;
-	private String password;
 	
 	@Override
 	public boolean employeeLogin(int employeeId, String password) throws IncorrectPasswordException {
@@ -41,40 +35,34 @@ public class EmployeeDaoImpl2 implements EmployeeDao{
 	}
 
 	@Override
-	public Employee viewEmployeeAccount(Employee a) throws SQLException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+	public Employee getEmployeeById(int empId) {
+		Employee emp = null;
+		PreparedStatement pstmt = null;
+
+		try (Connection con = ConnectionTest.getConnectionFromFile()) {
+			String sql = "SELECT * FROM EMPLOYEE WHERE EMPLOYEE_ID = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, empId);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				String password = rs.getString("EMPLOYEE_PASSWORD");
+				int managerID = rs.getInt("MANAGER_ID");
+				String firstName = rs.getString("EMPLOYEE_FIRSTNAME");
+				String lastName = rs.getString("EMPLOYEE_LASTNAME");
+				emp = new Employee(empId, password, managerID, firstName, lastName);
+			}
+
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return emp;
 	}
 
-	@Override
-	public List<Reimbursements> getReimbursements(Employee a) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Employee getEmployeeById(int employeeID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deposit(Employee a) throws SQLException, IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void withdraw(Employee a) throws OverdraftException, SQLException, IOException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteAccount(Employee a) throws SQLException, IOException {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void logout() {
