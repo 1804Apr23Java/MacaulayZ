@@ -1,26 +1,32 @@
 package com.revature.servlet;
 
 import java.io.IOException;
-import java.util.List;
-
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.revature.dao.EmployeeDao;
-import com.revature.dao.EmployeeDaoImpl2;
-import com.revature.tables.Employee;
+import javax.servlet.http.HttpSession;
 
 public class EmployeeServlet extends HttpServlet {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	public EmployeeServlet() {
+		super();
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		EmployeeDao ed = new EmployeeDaoImpl2();
-		List<Employee> employeeList = ed.getEmployeeById(empId);
+		HttpSession session = req.getSession(false);
+		
+		if(session != null && session.getAttribute("userId") != null) {
+			RequestDispatcher rd = req.getRequestDispatcher("pages/employee.html");
+			rd.forward(req, resp);
+		} else {
+			resp.sendRedirect("login.html");
+		}
 	}
 }

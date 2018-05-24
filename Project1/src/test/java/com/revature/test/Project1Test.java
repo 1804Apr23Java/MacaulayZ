@@ -7,7 +7,7 @@ import com.revature.java.IncorrectPasswordException;
 import org.junit.jupiter.api.Test;
 
 class Project1Test {
-	EmployeeDaoImpl2 empDao = new EmployeeDaoImpl2();
+	EmployeeDaoImpl empDao = new EmployeeDaoImpl();
 	@Test
 	void employeeLoginTest() {
 		try {
